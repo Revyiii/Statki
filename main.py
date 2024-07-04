@@ -1,10 +1,15 @@
-import pygame as p
 
-p.init()
+# Example file showing a circle moving on screen
+import pygame
 
-screen = p.display.set_mode((1000,1000))
-clock = p.time.Clock()
+# pygame setup
+pygame.init()
+screen = pygame.display.set_mode((1280, 720))
+clock = pygame.time.Clock()
 running = True
+dt = 0
+
+player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 
 while running:
     # poll for events
@@ -37,3 +42,4 @@ while running:
     dt = clock.tick(60) / 1000
 
 pygame.quit()
+
