@@ -1,45 +1,45 @@
 
 # Example file showing a circle moving on screen
-import pygame
+import pygame as p
 
-# pygame setup
-pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
+# p setup
+p.init()
+screen = p.display.set_mode((1000, 1000))
+clock = p.time.Clock()
 running = True
 dt = 0
 
-player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+player_pos = p.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 
 while running:
     # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    # p.QUIT event means the user clicked X to close your window
+    for event in p.event.get():
+        if event.type == p.QUIT:
             running = False
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("purple")
 
-    pygame.draw.circle(screen, "red", player_pos, 40)
+    p.draw.circle(screen, "red", player_pos, 40)
 
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_w]:
+    keys = p.key.get_pressed()
+    if keys[p.K_w]:
         player_pos.y -= 300 * dt
-    if keys[pygame.K_s]:
+    if keys[p.K_s]:
         player_pos.y += 300 * dt
-    if keys[pygame.K_a]:
+    if keys[p.K_a]:
         player_pos.x -= 300 * dt
-    if keys[pygame.K_d]:
+    if keys[p.K_d]:
         player_pos.x += 300 * dt
 
     # flip() the display to put your work on screen
-    pygame.display.flip()
+    p.display.flip()
 
     # limits FPS to 60
     # dt is delta time in seconds since last frame, used for framerate-
     # independent physics.
     dt = clock.tick(60) / 1000
 
-pygame.quit()
+p.quit()
 
