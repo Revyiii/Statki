@@ -189,5 +189,5 @@ def main():
         plansza(TK,31,2)
         Komunikat(TK ,TG,[losowanie,re])
 
-#if __name__ == "__main__":
-#    main()
+if __name__ == "__main__":
+    main()
