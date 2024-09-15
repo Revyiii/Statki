@@ -23,6 +23,7 @@ for w in range(0,23):
     for h in range(0,12):
         line.append((scr_w/23*w+scr_w/46,scr_h/12*h+scr_h/24))
     grid.append(line)
+
 def play(running,losowanie):
     m_last = False
     
@@ -83,7 +84,6 @@ def play(running,losowanie):
 def button(screen,text):
     p.draw.rect(screen,c[2],text[2])
     screen.blit(text[1], text[2])
-
 def menu(running):
     #text,pos,size
     button_text=["tak","nie"]
@@ -117,6 +117,8 @@ def menu(running):
             m_pos = p.mouse.get_pos() 
             if m_pos[0] in range(button_text[0][2].left,button_text[0][2].left+button_text[0][2].width) and m_pos[1] in range(button_text[0][2].top,button_text[0][2].top+button_text[0][2].height):
                 play(running,True)
+            if m_pos[0] in range(button_text[1][2].left,button_text[1][2].left+button_text[1][2].width) and m_pos[1] in range(button_text[1][2].top,button_text[1][2].top+button_text[1][2].height):
+                play(running,False)
            
         p.display.flip()
 

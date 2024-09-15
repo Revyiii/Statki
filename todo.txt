@@ -1,3 +1,13 @@
 []menu
+	[]button calls
+	[]title screen
+	[]save loding
+	[]backround image
 []winstate
 []grafika
+	[]
+[]audio
+	[]music
+	[]hit mark
+	[]button clicking
+	[]sea noise
