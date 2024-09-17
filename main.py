@@ -15,7 +15,7 @@ colour = {0:"blue",1:"grey",2:"grey",3:"grey",4:"grey",5:"blue",7:"red",8:"green
 c={0:(246,180,14),1:(30,30,70),2:(10,55,130)}
 
 p.font.init()
-font = p.font.Font("watermark.ttf",50)
+font = p.font.SysFont("ANTQUAB.ttf",50)
 
 
 for w in range(0,23):
@@ -34,10 +34,9 @@ def play(running,losowanie):
     re = [True]
     #print("czy chesz wczytac zapis?(t/n)")
     #if(getin()=='t'):
-    if(False):
+    if(losowanie==False):
         try:
             odczyt(TG,TK)
-            losowanie = False
             plansza(TG, 3, 2)
             plansza(TK, 31,2)
         except:
@@ -89,13 +88,13 @@ def button(screen,text):
     screen.blit(text[1], text[2])
 def menu(running):
     #text,pos,size
-    button_text=["tak","nie"]
+    button_text=[["tak",scr_w/3,scr_h/2],["nie",scr_w/3*2,scr_h/2],["Wczytac zapis?",scr_w/2,scr_h/3]]
     for i in range(0,len(button_text)):
         cell = []
-        
-        letters=font.render(button_text[i],True,c[0])
+        print(i)
+        letters=font.render(button_text[i][0],True,c[0])
         textRect=letters.get_rect()
-        textRect.center=(scr_w/2-w/2+100*i,scr_h/2-h/2)#do poprawy auto pozycjonowanie
+        textRect.center=(button_text[i][1],button_text[i][2])#do poprawy auto pozycjonowanie
         
         cell.append(button_text[i])
         cell.append(letters)
@@ -108,7 +107,7 @@ def menu(running):
         for event in p.event.get():
             if event.type == p.QUIT:
                 running = False
-        screen.fill(c[1])
+        screen.fill(c[2])
   
         for i in range(0,len(button_text)):
             button(screen,button_text[i])
@@ -119,9 +118,9 @@ def menu(running):
             m_last = True
             m_pos = p.mouse.get_pos() 
             if m_pos[0] in range(button_text[0][2].left,button_text[0][2].left+button_text[0][2].width) and m_pos[1] in range(button_text[0][2].top,button_text[0][2].top+button_text[0][2].height):
-                play(running,True)
-            if m_pos[0] in range(button_text[1][2].left,button_text[1][2].left+button_text[1][2].width) and m_pos[1] in range(button_text[1][2].top,button_text[1][2].top+button_text[1][2].height):
                 play(running,False)
+            if m_pos[0] in range(button_text[1][2].left,button_text[1][2].left+button_text[1][2].width) and m_pos[1] in range(button_text[1][2].top,button_text[1][2].top+button_text[1][2].height):
+                play(running,True)
            
         p.display.flip()
 
