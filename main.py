@@ -81,6 +81,9 @@ def play(running,losowanie):
         p.display.flip()
 
         dt = clock.tick(60) / 1000
+
+
+
 def button(screen,text):
     p.draw.rect(screen,c[2],text[2])
     screen.blit(text[1], text[2])
