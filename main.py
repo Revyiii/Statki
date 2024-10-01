@@ -98,7 +98,7 @@ def menu(running):
         
         cell.append(button_text[i])
         cell.append(letters)
-        cell.append(textRect)
+        cell.append(textRect)   
         button_text[i]=cell
     #text,letters,textrect
 
